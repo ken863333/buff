@@ -137,8 +137,8 @@ def rpsm_loop():
     global rps, rpm
     while True:
         initial = reqs
-        time.sleep(1.5)
-        rps = round((reqs - initial) / 1.5, 1)
+        time.sleep(0,1)
+        rps = round((reqs - initial) / 0.1, 1)
         rpm = round(rps * 60, 1)
 
 
