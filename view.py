@@ -151,6 +151,8 @@ def fetch_proxies():
         "https://raw.githubusercontent.com/rdavydov/proxy-list/main/proxies/socks4.txt",
         "https://raw.githubusercontent.com/rdavydov/proxy-list/main/proxies/socks5.txt"
         "https://advanced.name/freeproxy/662dfe2c77977"
+        "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"
+        "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=1000&country=all&ssl=all&anonymity=all"
     ]
     for url in url_list :
         response = requests.get(
