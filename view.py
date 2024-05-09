@@ -122,7 +122,7 @@ def send(__device_id, __install_id, cdid, openudid):
             try:
                 if response.json()['status_code'] == 0:
                     _lock.acquire()
-                    print(Colorate.Horizontal(Colors.green_to_blue, f'TikTok Viewbot by BUFFA [ SUCCESS ]: {success}'))
+                    print(Colorate.Horizontal(Colors.green_to_blue, f'TikTok Viewbot by Atty [ SUCCESS ]: {success}'))
                     success += 1
                     _lock.release()
             except:
@@ -133,12 +133,12 @@ def send(__device_id, __install_id, cdid, openudid):
         except Exception as e:
             pass
 
-def rpsm_loop():
+def rpsm_loop(interval):
     global rps, rpm
     while True:
         initial = reqs
-        time.sleep(0,1)
-        rps = round((reqs - initial) / 0.1, 1)
+        time.sleep(0)
+        rps = round((reqs - initial) / 0, 1)
         rpm = round(rps * 60, 1)
 
 
@@ -213,7 +213,8 @@ if __name__ == "__main__":
     rpm = 0
     rps = 0
 
-    threading.Thread(target=rpsm_loop).start()
+    threading.Thread(target=rpsm_loop, args=(3000,), daemon=True).start()
+
 
     while True:
         if success >= number_of_views:
@@ -225,3 +226,4 @@ if __name__ == "__main__":
         if threading.active_count() < 100:
             did, iid, cdid, openudid = device.split(':')
             threading.Thread(target=send, args=[did, iid, cdid, openudid]).start()
+
